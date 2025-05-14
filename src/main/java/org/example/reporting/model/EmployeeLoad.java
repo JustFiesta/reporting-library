@@ -1,5 +1,7 @@
 package org.example.reporting.model;
 
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents the workload data for an employee.
@@ -10,6 +12,9 @@ public class EmployeeLoad {
     private String employeeName;
     private Integer taskCount;
     private Double totalHours;
+    private Double fteEquivalent;
+    private List<TaskDetail> tasks;
+    private Map<String, Integer> tasksByStatus;
 
     /**
      * Default constructor
@@ -18,12 +23,7 @@ public class EmployeeLoad {
     }
 
     /**
-     * Full constructor with all fields
-     *
-     * @param employeeId The unique ID of the employee
-     * @param employeeName The name of the employee
-     * @param taskCount The number of tasks assigned to the employee
-     * @param totalHours The total hours spent/allocated for the employee
+     * Constructor with essential fields
      */
     public EmployeeLoad(Integer employeeId, String employeeName, Integer taskCount, Double totalHours) {
         this.employeeId = employeeId;
@@ -32,7 +32,22 @@ public class EmployeeLoad {
         this.totalHours = totalHours;
     }
 
-    // Getters and Setters
+    /**
+     * Full constructor with all fields
+     */
+    public EmployeeLoad(Integer employeeId, String employeeName, Integer taskCount, 
+                        Double totalHours, Double fteEquivalent,
+                        List<TaskDetail> tasks, Map<String, Integer> tasksByStatus) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.taskCount = taskCount;
+        this.totalHours = totalHours;
+        this.fteEquivalent = fteEquivalent;
+        this.tasks = tasks;
+        this.tasksByStatus = tasksByStatus;
+    }
+
+    // Getters and setters
     public Integer getEmployeeId() {
         return employeeId;
     }
@@ -63,5 +78,29 @@ public class EmployeeLoad {
 
     public void setTotalHours(Double totalHours) {
         this.totalHours = totalHours;
+    }
+
+    public Double getFteEquivalent() {
+        return fteEquivalent;
+    }
+
+    public void setFteEquivalent(Double fteEquivalent) {
+        this.fteEquivalent = fteEquivalent;
+    }
+
+    public List<TaskDetail> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<TaskDetail> tasks) {
+        this.tasks = tasks;
+    }
+
+    public Map<String, Integer> getTasksByStatus() {
+        return tasksByStatus;
+    }
+
+    public void setTasksByStatus(Map<String, Integer> tasksByStatus) {
+        this.tasksByStatus = tasksByStatus;
     }
 }
