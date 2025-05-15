@@ -10,6 +10,7 @@ public class TeamEfficiency {
     private Double avgCompletionHours;
     private Integer openIssues;
     private Integer closedIssues;
+    
     // Dodatkowe pola zgodne ze specyfikacją
     private Integer completedTasksCount;
     private Integer totalTasksCount;
@@ -20,12 +21,15 @@ public class TeamEfficiency {
     private Double tasksPerMember;
     private Map<String, Integer> tasksByPriority;
     private Double efficiencyScore;
-
+    
+    // Nowe pole dla oznaczenia zespołów bez zadań
+    private Boolean hasNoTasks = false;
+    
     // Konstruktory
     public TeamEfficiency() {
     }
 
-    // Oryginalne gettery i settery
+    // Gettery i settery
     public String getTeamName() {
         return teamName;
     }
@@ -58,7 +62,7 @@ public class TeamEfficiency {
         this.closedIssues = closedIssues;
     }
 
-    // Nowe gettery i settery
+    // Gettery i settery dla nowych pól
     public Integer getCompletedTasksCount() {
         return completedTasksCount;
     }
@@ -129,5 +133,13 @@ public class TeamEfficiency {
 
     public void setEfficiencyScore(Double efficiencyScore) {
         this.efficiencyScore = efficiencyScore;
+    }
+    
+    public Boolean getHasNoTasks() {
+        return hasNoTasks;
+    }
+    
+    public void setHasNoTasks(Boolean hasNoTasks) {
+        this.hasNoTasks = hasNoTasks;
     }
 }
