@@ -318,48 +318,48 @@ public class TeamEfficiencyReportGenerator extends AbstractPdfReportGenerator<Te
                     document.add(Chunk.NEWLINE);
                     
                     // Tabela priorytetów
-                    PdfPTable priorityTable = new PdfPTable(3);
-                    priorityTable.setWidthPercentage(100);
+                    // PdfPTable priorityTable = new PdfPTable(3);
+                    // priorityTable.setWidthPercentage(100);
                     
-                    // Nagłówki kolumn
-                    String[] priorityHeaders = {"Priorytet", "Liczba zadań", "Procent"};
-                    for (String header : priorityHeaders) {
-                        PdfPCell cell = new PdfPCell(new Phrase(header, normalFont));
-                        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                        cell.setBackgroundColor(new BaseColor(230, 230, 230));
-                        cell.setPadding(4);
-                        priorityTable.addCell(cell);
-                    }
+                    // // Nagłówki kolumn
+                    // String[] priorityHeaders = {"Priorytet", "Liczba zadań", "Procent"};
+                    // for (String header : priorityHeaders) {
+                    //     PdfPCell cell = new PdfPCell(new Phrase(header, normalFont));
+                    //     cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    //     cell.setBackgroundColor(new BaseColor(230, 230, 230));
+                    //     cell.setPadding(4);
+                    //     priorityTable.addCell(cell);
+                    // }
                     
-                    // Oblicz sumę wszystkich zadań dla priorytetów
-                    int totalPriorityTasks = tasksByPriority.values().stream()
-                            .mapToInt(Integer::intValue)
-                            .sum();
+                    // // Oblicz sumę wszystkich zadań dla priorytetów
+                    // int totalPriorityTasks = tasksByPriority.values().stream()
+                    //         .mapToInt(Integer::intValue)
+                    //         .sum();
                     
-                    // Dodaj wiersze priorytetów
-                    for (Map.Entry<String, Integer> entry : tasksByPriority.entrySet()) {
-                        // Nazwa priorytetu
-                        PdfPCell nameCell = new PdfPCell(new Phrase(entry.getKey(), normalFont));
-                        nameCell.setHorizontalAlignment(Element.ALIGN_LEFT);
-                        nameCell.setPadding(4);
-                        priorityTable.addCell(nameCell);
+                    // // Dodaj wiersze priorytetów
+                    // for (Map.Entry<String, Integer> entry : tasksByPriority.entrySet()) {
+                    //     // Nazwa priorytetu
+                    //     PdfPCell nameCell = new PdfPCell(new Phrase(entry.getKey(), normalFont));
+                    //     nameCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    //     nameCell.setPadding(4);
+                    //     priorityTable.addCell(nameCell);
                         
-                        // Liczba zadań
-                        PdfPCell countCell = new PdfPCell(new Phrase(String.valueOf(entry.getValue()), normalFont));
-                        countCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                        countCell.setPadding(4);
-                        priorityTable.addCell(countCell);
+                    //     // Liczba zadań
+                    //     PdfPCell countCell = new PdfPCell(new Phrase(String.valueOf(entry.getValue()), normalFont));
+                    //     countCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    //     countCell.setPadding(4);
+                    //     priorityTable.addCell(countCell);
                         
-                        // Procent
-                        double percent = totalPriorityTasks > 0 ? 
-                                (double) entry.getValue() / totalPriorityTasks * 100 : 0;
-                        PdfPCell percentCell = new PdfPCell(new Phrase(df.format(percent) + "%", normalFont));
-                        percentCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                        percentCell.setPadding(4);
-                        priorityTable.addCell(percentCell);
-                    }
+                    //     // Procent
+                    //     double percent = totalPriorityTasks > 0 ? 
+                    //             (double) entry.getValue() / totalPriorityTasks * 100 : 0;
+                    //     PdfPCell percentCell = new PdfPCell(new Phrase(df.format(percent) + "%", normalFont));
+                    //     percentCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    //     percentCell.setPadding(4);
+                    //     priorityTable.addCell(percentCell);
+                    // }
                     
-                    document.add(priorityTable);
+                    // document.add(priorityTable);
                 }
                 
                 document.add(Chunk.NEWLINE);
